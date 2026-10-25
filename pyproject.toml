@@ -1,0 +1,29 @@
+[project]
+name = "shellsafe"
+version = "0.2.0"
+description = "Safe shell command suggestion with a sub-1B CPU model"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "llama-cpp-python", "huggingface_hub", "typer", "rich", "rank-bm25", "pandas",
+]
+
+[project.optional-dependencies]
+# Training, data generation and benchmark scripts under scripts/ and eval/. The teacher runs from its own vLLM venv
+# (scripts/setup_teacher.sh) because vLLM pins its own torch.
+train = [
+  "torch", "transformers", "peft", "trl", "datasets", "accelerate", "safetensors", "gguf", "sentencepiece",
+  "protobuf", "tqdm",
+]
+eval = ["icalfa", "requests", "openai", "tqdm"]
+dev = ["pytest"]
+
+[project.scripts]
+shellsafe = "shellsafe.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/shellsafe"]

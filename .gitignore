@@ -1,0 +1,27 @@
+# environments and caches
+.venv/
+.venv-*/
+.hf_cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# large or generated: models, data, logs, third-party checkouts (scripts/setup.sh recreates them)
+models/
+data/
+logs/
+third_party/
+
+# benchmark outputs
+eval/results/
+eval/cached/
+eval/det*/
+eval/vote/
+eval/nothink/
+eval/judge_check/
+eval/judge_cache.jsonl
+
+# secrets
+.llmx.env
+.hf_upload_token
+*.env

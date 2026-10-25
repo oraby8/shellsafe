@@ -1,0 +1,24 @@
+{
+  "_doc": "Baseline candidates. system/user_tmpl follow each fine-tune's model card; base models share the NL2SH-style prompt.",
+  "default": {
+    "system": "You translate natural language requests into a single Bash command for Ubuntu Linux. Reply with the command only. No explanation, no markdown fences.",
+    "user_tmpl": "{nl}"
+  },
+  "models": {
+    "Qwen2.5-Coder-0.5B-Instruct": {},
+    "Qwen3-0.6B": {},
+    "Qwen3.5-0.8B": {},
+    "Qwen2.5-Coder-0.5B-Instruct-NL2SH": {
+      "system": "Your task is to translate a natural language instruction to a Bash command. You will receive an instruction in English and output a Bash command that can be run in a Linux terminal.",
+      "user_tmpl": "{nl}"
+    },
+    "nl-to-bash": {},
+    "shellminator-qwen05b-dpo-selfplay": {
+      "system": "You are a helpful assistant that translates natural language to bash commands.\nContext: cwd=/home/user, system=Linux x86_64, shell=bash.\nReply with a single bash command only. No explanation, no markdown fences.",
+      "user_tmpl": "Generate single Bash command: {nl}"
+    },
+    "kitty-bash-llm": {
+      "system": "You are a bash command generator. Given a natural language request, output only the bash command that accomplishes it. No explanation, no markdown fences."
+    }
+  }
+}
